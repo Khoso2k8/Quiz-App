@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  height: 100vh;
+  background-color: #343a40;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 5fr auto auto;
+  column-gap: 2rem;
+  align-items: center;
+  background-color: #5f3dc4;
+  justify-content: space-between;
+  padding: 2rem 5rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+}
+
+/*  */
+.header-img {
+  height: 12rem;
+}
+
+.category-selection {
+  align-self: center;
+  justify-self: center;
+}
+
+.buttons {
+  align-self: center;
+  justify-self: center;
+}
+
+.logo {
+  align-self: center;
+  justify-self: center;
+}
+
+.header h2 {
+  text-transform: uppercase;
+}
+
+select {
+  margin-top: 0.5rem;
+  border: none;
+  border-collapse: collapse;
+}
+
+.category-selection select,
+.category-selection option {
+  width: 46rem;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  border: none;
+  background-color: #495057;
+  color: #fff;
+  border-radius: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  border-radius: 1rem;
+  background-color: #e67f22;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: #fab005;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+}
+
+section {
+  height: 45rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 5rem;
+  margin-top: 2rem;
+}
+
+.score-card {
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.score-card h2 {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+progress {
+  width: 30rem;
+}
+.score-text-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score-card h3 {
+  font-size: 1.4rem;
+  color: #e67f22;
+}
+
+.score-card p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #e67f22;
+}
+.score-card span {
+  margin-left: 0.5rem;
+}
+
+.main-content-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.main-content h2 {
+  font-size: 2.4rem;
+}
+
+/* .main-content-image-box {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+} */
+
+.main-content-inner img {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+}
+
+.btn-option {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 100rem;
+  background-color: #5f3dc4;
+  color: #fff;
+  border: none;
+  margin-right: 0.8rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.result {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.result span {
+  margin-right: 0.5rem;
+}
+
+.correct {
+  color: #69db7c;
+}
+
+.wrong {
+  color: #ff6b6b;
+}
+
+.buttons-outside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42rem;
+  position: absolute;
+  left: 50%;
+  bottom: -11rem;
+  transform: translate(-50%);
+}
+
+.btn-timer {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #495057;
+  border: none;
+  border-radius: 1rem;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-progress-bar {
+  background-color: #5f3dc4;
+  border-radius: 200px;
+}
+::-webkit-progress-value {
+  background-color: #5f3dc4;
+  border-radius: 200px;
+}
+
+.btn-option.correct-option {
+  background-color: #087f5b;
+  color: #fff;
+}
+
+.btn-option.wrong-option {
+  background-color: #e67f22;
+  color: #fff;
+}
+
+.btn-option:not([disabled]):hover {
+  background-color: #e67f22;
+  transform: scale(1.1) translateY(-1px);
+}
+
+.btn-option[disabled]:hover {
+  cursor: not-allowed;
+}
+
+/* New Category */
+
+.category-container {
+  width: 80rem;
+  margin: 3rem auto;
+  padding: 7rem 2rem 2rem 2rem;
+  background-color: #495057;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+.category-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+form input {
+  padding: 1rem;
+  width: 60rem;
+  border-radius: 1rem;
+  background-color: #ced4da;
+}
+
+form select,
+form option {
+  padding: 0.5rem;
+  width: 60rem;
+  border-radius: 1rem;
+  background-color: #ced4da;
+  font-size: 1.6rem;
+  caret-color: #e67f22;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35rem;
+  margin-top: 1rem;
+}
+
+/* Media Queries */
+
+@media (max-width: 82em) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header-img {
+    height: 10rem;
+  }
+
+  .header h2 {
+    font-size: 1.55rem;
+  }
+
+  .category-selection select,
+  .category-selection option {
+    width: 30rem;
+  }
+
+  .btn {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.4rem;
+  }
+  progress {
+    width: 25rem;
+  }
+  .score-card p {
+    font-size: 1.2rem;
+  }
+  .score-card h2 {
+    font-size: 1.4rem;
+  }
+  .score-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+  .header {
+    padding: 1.8rem 4rem;
+  }
+}
+
+@media (max-width: 52em) {
+  html {
+    font-size: 50%;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 5rem;
+  }
+  .buttons {
+    grid-column: 2/3;
+  }
+
+  .category-selection select,
+  .category-selection option {
+    width: 38rem;
+  }
+  .header h2 {
+    font-size: 2rem;
+  }
+  progress {
+    width: 23rem;
+  }
+  .score-card p {
+    font-size: 1.2rem;
+  }
+  .score-card h2 {
+    font-size: 1.4rem;
+  }
+  .score-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 39em) {
+  html {
+    font-size: 43.75%;
+  }
+  .btn-option {
+    font-size: 1.5rem;
+    padding: 0.9rem 1.8rem;
+  }
+  .category-container {
+    width: 60rem;
+  }
+  form input {
+    width: 50rem;
+    font-size: 1.2rem;
+  }
+
+  form select,
+  form option {
+    width: 50rem;
+    font-size: 1.2rem;
+  }
+  .btns {
+    gap: 20rem;
+  }
+  progress {
+    width: 20rem;
+  }
+  .score-card p {
+    font-size: 1.2rem;
+  }
+  .score-card h2 {
+    font-size: 1.4rem;
+  }
+  .score-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 32.5em) {
+  section {
+    margin-top: 17rem;
+  }
+  .score-card {
+    position: relative;
+    order: -1;
+    margin-left: 14rem;
+    margin-top: 3rem;
+    gap: 2rem;
+  }
+  progress {
+    width: 40rem;
+  }
+  .score-card p {
+    font-size: 2rem;
+  }
+  .score-card h2 {
+    font-size: 2.2rem;
+  }
+  .score-card h3 {
+    font-size: 2rem;
+  }
+  .buttons-outside {
+    position: relative;
+    order: 1;
+    margin-right: 7rem;
+    margin-top: -3rem;
+  }
+}
+
+@media (max-width: 32.5em) {
+  html {
+    font-size: 40%;
+  }
+  .header h2 {
+    font-size: 1.2rem;
+  }
+  .category-selection select,
+  .category-selection option {
+    width: 23rem;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .main-content {
+    margin-top: 3rem;
+  }
+  .main-content h2 {
+    font-size: 2rem;
+  }
+  section {
+    margin-top: 30rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .buttons-outside {
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    left: 10%;
+    top: 30%;
+    margin-top: -12rem;
+  }
+  .btn-timer {
+    order: 1;
+  }
+
+  .category-container {
+    width: 40rem;
+  }
+
+  form input {
+    width: 37rem;
+    font-size: 1.1rem;
+  }
+
+  form select,
+  form option {
+    width: 37rem;
+    font-size: 1.1rem;
+  }
+  .btns {
+    gap: 12rem;
+  }
+}
+
+@media (max-width: 18em) {
+  html {
+    font-size: 30%;
+  }
+
+  .header h2 {
+    font-size: 1rem;
+  }
+  .main-content h2 {
+    font-size: 1.8rem;
+  }
+  .category-selection select,
+  .category-selection option {
+    width: 20rem;
+  }
+  .category-container {
+    width: 40rem;
+  }
+
+  form input {
+    width: 30rem;
+  }
+
+  form select,
+  form option {
+    width: 30rem;
+  }
+
+  .btns {
+    gap: 10rem;
+  }
+}
