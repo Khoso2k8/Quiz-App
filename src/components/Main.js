@@ -51,8 +51,6 @@ function Main({
 
             setAnswer(null);
 
-            console.log(questions[type]);
-
             return setIndex(index => index + 1);
           }}
         >
