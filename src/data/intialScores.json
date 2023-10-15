@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Cricket",
+    "score": 0
+  },
+  {
+    "id": 2,
+    "name": "International",
+    "score": 0
+  },
+  {
+    "id": 3,
+    "name": "Pakistani Politician",
+    "score": 0
+  },
+  {
+    "id": 4,
+    "name": "Showbiz",
+    "score": 0
+  },
+  {
+    "id": 5,
+    "name": "Football",
+    "score": 0
+  }
+]
