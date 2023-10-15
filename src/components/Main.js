@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function toCamelCase(s) {
   s = s.replace(/^([A-Z])|\s(\w)/g, function (match, p1, p2, offset) {
@@ -19,12 +19,32 @@ function Main({
   setTimer,
   scores,
   setScores,
-
   setFinished,
 }) {
   function handleAnswer(index) {
     setAnswer(index);
   }
+
+  const mins = Math.floor(timer / 60);
+  const seconds = Math.floor(timer % 60);
+
+  useEffect(
+    function () {
+      if (timer === 0 && index === questions[type].length - 1) {
+        setFinished(true);
+      }
+      const id = setInterval(function () {
+        if (timer === 0) {
+          setIndex(index => index + 1);
+          setTimer(30);
+          return;
+        }
+        setTimer(timer => timer - 1);
+      }, 1000);
+      return () => clearInterval(id);
+    },
+    [setFinished, questions, type, index, timer, setTimer, setIndex]
+  );
 
   return (
     <section>
@@ -42,10 +62,9 @@ function Main({
 
       <div className="buttons-outside">
         <button className="btn-timer">
-          0{Math.floor(timer / (60 * 1000))}:
-          {Math.floor(timer % 60) < 10
-            ? `0${Math.floor(timer % 60)}`
-            : Math.floor(timer % 60)}
+          {mins < 10 && '0'}
+          {mins}:{seconds < 10 && '0'}
+          {seconds}
         </button>
         {index === questions[type].length - 1 ? (
           <button className="btn" onClick={() => setFinished(true)}>

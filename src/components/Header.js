@@ -32,6 +32,7 @@ function Header({
   onShowNewCategory,
   onShowNewQuestion,
   answered,
+  setTimer,
 }) {
   return (
     <header className="header">
@@ -44,6 +45,7 @@ function Header({
         setAnswer={setAnswer}
         setIndex={setIndex}
         answered={answered}
+        setTimer={setTimer}
       />
       <Buttons
         onShowNewCategory={onShowNewCategory}
@@ -71,7 +73,7 @@ function SelectionBox({
   setType,
   setAnswer,
   setIndex,
-  answered,
+  setTimer,
 }) {
   return (
     <div className="category-selection">
@@ -81,6 +83,7 @@ function SelectionBox({
         onChange={e => {
           setAnswer(null);
           setIndex(0);
+          setTimer(30);
           return setType(toCamelCase(e.target.value));
         }}
       >

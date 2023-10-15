@@ -13,7 +13,7 @@ function App() {
   const [answer, setAnswer] = useState(null);
   const [index, setIndex] = useState(0);
   const [showAddNewCategory, setShowNewCategory] = useState(false);
-  const [timer, setTimer] = useState(300000);
+  const [timer, setTimer] = useState(30);
   const [showNewQuestion, setShowNewQuestion] = useState(false);
   const [scores, setScores] = useState(initialScores);
   const [finished, setFinished] = useState(false);
@@ -44,7 +44,7 @@ function App() {
     setType('cricket');
     setAnswer(null);
     setIndex(0);
-    setTimer(300000);
+    setTimer(30);
     setFinished(false);
     setScores(initialScores);
   }
@@ -59,6 +59,7 @@ function App() {
         setIndex={setIndex}
         onShowNewCategory={handleShowNewCategory}
         onShowNewQuestion={handleNewQuestion}
+        setTimer={setTimer}
       />
       {showAddNewCategory && (
         <AddNewCategory
