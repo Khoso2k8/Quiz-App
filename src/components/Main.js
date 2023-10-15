@@ -77,6 +77,7 @@ function Main({
               if (index >= questions[type].length - 1) return;
 
               setAnswer(null);
+              setTimer(30);
 
               return setIndex(index => index + 1);
             }}
