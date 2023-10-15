@@ -107,7 +107,7 @@ section {
 
 .score-card {
   position: absolute;
-  top: 3rem;
+  top: 1rem;
   right: 5rem;
   display: flex;
   flex-direction: column;
@@ -293,6 +293,38 @@ form option {
   justify-content: space-between;
   gap: 35rem;
   margin-top: 1rem;
+}
+
+/* Finish screen */
+.finish-section {
+  margin-top: 10rem;
+}
+.finish-score-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  list-style: none;
+  width: 40rem;
+}
+
+.finish-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #495057; */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+  padding: 2rem 4rem;
+  border-radius: 1rem;
+}
+
+.finish-score:hover {
+  transform: scale(1.1);
+}
+
+.finish-score p:first-child {
+  color: #e67f22;
+  font-weight: 600;
 }
 
 /* Media Queries */

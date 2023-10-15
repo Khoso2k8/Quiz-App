@@ -19,6 +19,8 @@ function Main({
   setTimer,
   scores,
   setScores,
+
+  setFinished,
 }) {
   function handleAnswer(index) {
     setAnswer(index);
@@ -35,6 +37,7 @@ function Main({
         setScores={setScores}
         type={type}
         questions={questions}
+        setFinished={setFinished}
       />
 
       <div className="buttons-outside">
@@ -44,18 +47,24 @@ function Main({
             ? `0${Math.floor(timer % 60)}`
             : Math.floor(timer % 60)}
         </button>
-        <button
-          className="btn"
-          onClick={() => {
-            if (index >= questions[type].length - 1) return;
+        {index === questions[type].length - 1 ? (
+          <button className="btn" onClick={() => setFinished(true)}>
+            Finish
+          </button>
+        ) : (
+          <button
+            className="btn"
+            onClick={() => {
+              if (index >= questions[type].length - 1) return;
 
-            setAnswer(null);
+              setAnswer(null);
 
-            return setIndex(index => index + 1);
-          }}
-        >
-          Next
-        </button>
+              return setIndex(index => index + 1);
+            }}
+          >
+            Next
+          </button>
+        )}
       </div>
     </section>
   );
@@ -165,7 +174,15 @@ function Question({
   );
 }
 
-function Options({ question, onAnswer, setScores, type, answer, questions }) {
+function Options({
+  question,
+  onAnswer,
+  setScores,
+  type,
+  answer,
+  questions,
+  index,
+}) {
   return (
     <div className="options">
       {question.options.map((option, i) => (
@@ -179,6 +196,7 @@ function Options({ question, onAnswer, setScores, type, answer, questions }) {
           type={type}
           answer={answer}
           questions={questions}
+          index={index}
         />
       ))}
     </div>
@@ -194,6 +212,7 @@ function Option({
   type,
   answer,
   questions,
+  index = { index },
 }) {
   return (
     <button

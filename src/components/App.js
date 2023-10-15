@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import AddNewCategory from './AddNewCategory';
 import AddNewQuestion from './AddNewQuestion';
+import FinishScreen from './FinishScreen';
 
 const intialQuestions = {
   cricket: [
@@ -172,12 +173,60 @@ const intialQuestions = {
       correct: 0,
     },
   ],
+  showbiz: [
+    {
+      id: 1,
+      question: 'She is the host of a famous TV Morning Show',
+      options: ['Nida Yasir', 'Shaista Lodhi', 'Nadia Khan', 'Iqra Aziz'],
+      image:
+        'https://i.tribune.com.pk/media/images/Nida-Yasir-this-(1)1672216388-0/Nida-Yasir-this-(1)1672216388-0.png',
+      correct: 0,
+    },
+    {
+      id: 2,
+      question: 'Name the famous Pakistani Darama Actor',
+      options: [
+        'Sahir Lodhi',
+        'Faisal Qureshi',
+        'Fahad Mustafa',
+        'Yasir Hussain',
+      ],
+      image:
+        'https://7thsky.biz/7skynewweb/wp-content/uploads/2020/02/fq-l.jpg',
+      correct: 1,
+    },
+  ],
+  football: [
+    {
+      id: 1,
+      question: 'Identify the famous footballer in the picture',
+      options: ['Lionel Messi', 'Cristiano Ronaldo', 'Neymar', 'Kylian Mbappe'],
+      image:
+        'https://images.mlssoccer.com/image/private/t_editorial_landscape_12_desktop/f_png/prd-league/cgyzkwhm14d16lkdwjkq.png',
+      correct: 1,
+    },
+    {
+      id: 2,
+      question: 'Name the player in the image',
+      options: [
+        'Bernardo Silva',
+        'Kevin De Bruyne',
+        'Robert Lewandowski',
+        'Kylian Mbappé',
+      ],
+      image:
+        'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt7c219eafc68c106f/652521b352b0f5beddf3d0c7/GOAL_-_Blank_WEB_-_Facebook_(1).jpg?auto=webp&format=pjpg&width=1200&quality=60',
+      correct: 3,
+    },
+  ],
 };
 
 const initialScores = [
-  { name: 'Cricket', score: 0 },
-  { name: 'International', score: 0 },
-  { name: 'Pakistani Politician', score: 0 },
+  { id: 1, name: 'Cricket', score: 0 },
+  { id: 2, name: 'International', score: 0 },
+  { id: 3, name: 'Pakistani Politician', score: 0 },
+  { id: 4, name: 'Showbiz', score: 0 },
+  { id: 5, name: 'Football', score: 0 },
 ];
 
 function App() {
@@ -189,6 +238,7 @@ function App() {
   const [timer, setTimer] = useState(300000);
   const [showNewQuestion, setShowNewQuestion] = useState(false);
   const [scores, setScores] = useState(initialScores);
+  const [finished, setFinished] = useState(false);
 
   function handleShowNewCategory() {
     setShowNewCategory(show => !show);
@@ -210,6 +260,15 @@ function App() {
   function handleNewQuestion() {
     setShowNewQuestion(showQuestion => !showQuestion);
     setShowNewCategory(false);
+  }
+
+  function handleRestart() {
+    setType('cricket');
+    setAnswer(null);
+    setIndex(0);
+    setTimer(300000);
+    setFinished(false);
+    setScores(initialScores);
   }
 
   return (
@@ -240,7 +299,15 @@ function App() {
         />
       )}
 
-      {showAddNewCategory || showNewQuestion || (
+      {finished && (
+        <FinishScreen
+          questions={questions}
+          scores={scores}
+          onRestart={handleRestart}
+        />
+      )}
+
+      {showAddNewCategory || showNewQuestion || finished || (
         <Main
           type={type}
           questions={questions}
@@ -252,6 +319,7 @@ function App() {
           setTimer={setTimer}
           scores={scores}
           setScores={setScores}
+          setFinished={setFinished}
         />
       )}
     </div>

@@ -31,6 +31,7 @@ function Header({
   setIndex,
   onShowNewCategory,
   onShowNewQuestion,
+  answered,
 }) {
   return (
     <header className="header">
@@ -42,6 +43,7 @@ function Header({
         setType={setType}
         setAnswer={setAnswer}
         setIndex={setIndex}
+        answered={answered}
       />
       <Buttons
         onShowNewCategory={onShowNewCategory}
@@ -69,6 +71,7 @@ function SelectionBox({
   setType,
   setAnswer,
   setIndex,
+  answered,
 }) {
   return (
     <div className="category-selection">
