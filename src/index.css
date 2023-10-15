@@ -297,8 +297,10 @@ form option {
 
 /* Finish screen */
 .finish-section {
-  margin-top: 10rem;
+  margin-top: 11rem;
+  gap: 2rem;
 }
+
 .finish-score-container {
   display: grid;
   grid-template-columns: 1fr;
