@@ -12,6 +12,7 @@ function FinishScreen({ questions, scores, onRestart }) {
       <button className="btn" onClick={onRestart}>
         Restart
       </button>
+      <p>&copy; copyright by Waqar Ahmed Khoso</p>
     </section>
   );
 }
